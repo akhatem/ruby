@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class= "post">
-<h1 class="title"><%= @category.name %></h1>
+<h1 class="title"><%= "\n#{@category.name}" %></h1>
 <% if @posts.each do |post| %>
-<div>
   <h3><%= link_to post.title, post %></h3>
-  <p class="entry"><%= post.body %></p>
-  <p class="byline"><%= post.category.created_at.strftime("%d/%m/%Y") %></p>
-</div>
+    <p class="meta">Date:<%= post.category.created_at.strftime("%d/%m/%Y") %></p>
+  <div class="entry"><%= post.body %></div>
 <% end.empty? %>
 	<p class="entry">Sorry, no posts available at the moment!</p>
 <% end %>

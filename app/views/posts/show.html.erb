@@ -1,7 +1,28 @@
+<p id="notice"><%= notice %></p>
 <div class="post">
 	<h1 class="title"><%= @post.title %></h1>
-	<p class="entry"><%= @post.body %></p>
-	<p class="byline">Date: <%= @post.created_at.strftime('%d/%m/%y') %> | Created by: <%= @post.admin_user.name %></p>
-	<p clas="meta">Category: <%= link_to @post.category.name, category_path(:id => @post.category.id) %></p>
-<p><%= link_to "Back to Posts", posts_path %><p>
+	<p class="meta">Date: <%= @post.created_at.strftime('%d/%m/%y') %>
+	<p class="create"><%= "Created by: #{@post.admin_user.name}" %></p>
+	<div class="entry"><%= @post.body %></div>
+	<p>Category: <%= link_to @post.category.name, category_path(:id => @post.category.id) %><br><%= link_to "Back to Posts", posts_path %></p>
+	<hr><br>
+	<h3>Add a Comment</h3><br>
+	<div><%= form_for @comment do |com| %>
+			<%= com.hidden_field :post_id %>
+			<p>
+				<%= com.label :name %><br>
+				<%= com.text_field :name %>
+			</p>
+			<p>
+				<%= com.label :body %><br>
+				<%= com.text_area :body %>
+			</p>
+			<p>
+				<%= com.submit "Add Comment" %>
+			</p>
+			<% end %>
+	</div>
+	<br>
+	<%= render 'comments/comment' %>
+	
 </div>

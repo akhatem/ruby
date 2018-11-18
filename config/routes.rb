@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'tabs/about'
 
   get 'tabs/edit'

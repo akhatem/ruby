@@ -259,7 +259,8 @@ a:hover {
 
 .post .entry {
 	padding: 20px 30px 20px 30px;
-	padding-bottom: 20px;
+	padding-top: 40px;
+	padding-bottom: 30px;
 	text-align: justify;
 }
 
@@ -273,8 +274,17 @@ a:hover {
 	float: left;
 }
 
+.post .create {
+	float: right;
+}
+
 .post .links {
 	float: right;
+}
+
+.post .comments {
+	float: right;
+	display: none;
 }
 
 /* FULL POST */

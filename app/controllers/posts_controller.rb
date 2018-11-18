@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   def show
   	@post = Post.find(params[:id])
 	@user = AdminUser.all
+	@comment = Comment.new
+	@comment.post_id = @post.id
+	@comments = @post.comments.all
   end
 
   def create
