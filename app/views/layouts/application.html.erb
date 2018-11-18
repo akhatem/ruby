@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby | Sample Project</title>
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div class="flash-mesages"><% flash.each do |key, value| %>
+		<p><%= value %></p>
+	<% end %></div>
+    <div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><%= link_to "Ruby Web", root_path %></h1>
+				<p>Ruby on Rails</p>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><%= link_to "Home", root_path %></li>
+                    <li><%= link_to "edit", admin_root_path %></li>
+                    <li><%= link_to "About", tabs_about_path %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<%= yield %>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<div id="search">
+								<form method="get" action="#">
+								</form>
+							</div>
+							<div style="clear: both;">&nbsp;</div>
+						</li>
+						<li>
+							<h2>Categories list</h2>
+							<ul>
+								<% all_categories.each do |c| %>
+
+  									<li><%= link_to c.name, category_path(id: c.id) %></li>
+								<% end %>
+							</ul>
+						</li>
+						<li>
+							<h2>Posts list</h2>
+							<ul>
+								<% all_posts.each do |p| %>
+									<li><%= link_to p.title, post_path(id: p.id) %></li>
+								<% end %>
+							</ul>
+						</li>
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+	<div id="footer">
+		<p>&copy; 2018, Ruby Sample Project</p>
+	</div>
+</div>
+<!-- end #footer -->
+  </body>
+</html>
